@@ -1,0 +1,42 @@
+<p-table
+  #datatableStories [value]="stories"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10, 25, 50]"
+  [paginator]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [globalFilterFields]="['title']"
+>
+  <ng-template pTemplate="caption">
+    <div class="row">
+      <div class="col-2">
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text"
+            (input)="datatableStories.filterGlobal($any($event.target).value, 'contains')"
+            placeholder="Search story"
+            class="p-inputtext p-component p-element"/>
+        </span>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Title</th>
+      <th>Link</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-story>
+    <tr>
+      <td>{{ story.title }}</td>
+      <td>
+        <button type="button" class="p-button-secondary" (click)="openStory(story.link)" pButton icon="pi pi-external-link" label="Go to story"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="7">No stories found.</td>
+    </tr>
+  </ng-template>
+</p-table>
