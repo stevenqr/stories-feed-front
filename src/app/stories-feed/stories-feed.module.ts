@@ -6,6 +6,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { SkeletonModule } from 'primeng/skeleton';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     TableModule,
     ButtonModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    SkeletonModule
   ],
   exports: [
     MainPageComponent

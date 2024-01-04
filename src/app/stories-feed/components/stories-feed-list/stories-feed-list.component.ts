@@ -10,10 +10,12 @@ import { StoriesFeedService } from '../../services/stories-feed.service';
 export class StoriesFeedListComponent implements OnInit {
 
   stories: Story[] = [];
+  loading: boolean = false;
 
   constructor(private storiesFeedService: StoriesFeedService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.getStoriesFeed();
   }
 
@@ -24,6 +26,7 @@ export class StoriesFeedListComponent implements OnInit {
   getStoriesFeed(): void {
     this.storiesFeedService.getStoriesFeed().subscribe( response =>{
       this.stories = response;
+      this.loading = false;
     });
   }
 }
